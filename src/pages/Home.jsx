@@ -28,6 +28,8 @@ class Home extends Component {
               <button type="submit">Pesquisar</button>
             </div>
           </label>
+
+          <div className="product-area" />
         </form>
       </main>
     );
