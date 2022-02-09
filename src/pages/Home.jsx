@@ -5,6 +5,10 @@ class Home extends Component {
     queryInput: '',
   }
 
+  handleChange = ({ target }) => {
+    this.setState({ queryInput: target.value });
+  }
+
   render() {
     const { queryInput } = this.state;
 
@@ -17,6 +21,7 @@ class Home extends Component {
               <input
                 id="query-input"
                 value={ queryInput }
+                onChange={ this.handleChange }
                 data-testid="query-input"
                 type="text"
               />
