@@ -6,6 +6,7 @@ class Home extends Component {
   state = {
     queryInput: '',
     searchedProducts: [],
+    searched: false,
   }
 
   handleChange = ({ target }) => {
@@ -16,11 +17,11 @@ class Home extends Component {
     event.preventDefault();
     const { queryInput } = this.state;
     const { results } = await api.getProductsFromCategoryAndQuery('MLB5672', queryInput);
-    this.setState({ searchedProducts: results });
+    this.setState({ searchedProducts: results, searched: true });
   }
 
   render() {
-    const { queryInput, searchedProducts } = this.state;
+    const { queryInput, searchedProducts, searched } = this.state;
 
     return (
       <main>
@@ -35,13 +36,21 @@ class Home extends Component {
                 data-testid="query-input"
                 type="text"
               />
-              <button type="submit" onClick={ this.searchButton }>Pesquisar</button>
+              <button
+                type="submit"
+                onClick={ this.searchButton }
+                data-testid="query-button"
+              >
+                Pesquisar
+              </button>
             </div>
           </label>
 
           <div className="product-area">
-            { searchedProducts
-              .map((product) => <Product key={ product.id } { ...product } />) }
+            { searchedProducts.length > 0
+              ? searchedProducts
+                .map((product) => <Product key={ product.id } { ...product } />)
+              : searched && <span>Nenhum produto foi encontrado</span> }
           </div>
         </form>
       </main>
