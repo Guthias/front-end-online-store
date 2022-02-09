@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import * as api from '../services/api.js';
+import * as api from '../services/api';
+import Product from '../components/Product';
 
 class Home extends Component {
   state = {
@@ -19,7 +20,7 @@ class Home extends Component {
   }
 
   render() {
-    const { queryInput } = this.state;
+    const { queryInput, searchedProducts } = this.state;
 
     return (
       <main>
@@ -38,7 +39,10 @@ class Home extends Component {
             </div>
           </label>
 
-          <div className="product-area" />
+          <div className="product-area">
+            { searchedProducts
+              .map((product) => <Product key={ product.id } { ...product } />) }
+          </div>
         </form>
       </main>
     );

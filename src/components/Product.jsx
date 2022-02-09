@@ -2,15 +2,16 @@ import React, { Component } from 'react';
 
 export default class Product extends Component {
   render() {
+    const { title, price, thumbnail } = this.props;
     return (
-      <div>
+      <div className="product" data-testid="product">
         <div className="product-area-image">
-          <img className="product-image" src="" alt="" />
+          <img className="product-image" src={ thumbnail } alt={ title } />
         </div>
 
         <div className="product-details">
-          <span>Product Name</span>
-          <span>R$ 99.00 </span>
+          <span>{ title }</span>
+          <span>{ `R$ ${price}` }</span>
         </div>
       </div>
     );
