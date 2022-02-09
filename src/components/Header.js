@@ -2,20 +2,19 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 class Header extends React.Component {
-  
   render() {
     return (
       <div>
-      <Link
-        data-testid="shopping-cart-button"
-        to="/ShoppingCart"
-      >
-        <button
-          type='button'
+        <Link
+          data-testid="shopping-cart-button"
+          to="/ShoppingCart"
         >
-        Carrinho
-        </button>
-      </Link>
+          <button
+            type="button"
+          >
+            Carrinho
+          </button>
+        </Link>
       </div>
     );
   }
