@@ -2,17 +2,14 @@ import React, { Component } from 'react';
 import * as api from '../services/api';
 
 class Category extends Component {
-  constructor() {
-    super();
-    this.state = {
+    state = {
       allCategory: [],
     };
-  }
 
   componentDidMount = async () => {
-    const getApiCategory = await api.getCategories();
     this.setState({
-      allCategory: getApiCategory,
+      allCategory: await api.getCategories(),
+
     });
   }
 
