@@ -1,12 +1,21 @@
 import React, { Component } from 'react';
+import * as api from '../services/api.js';
 
 class Home extends Component {
   state = {
     queryInput: '',
+    searchedProducts: [],
   }
 
   handleChange = ({ target }) => {
     this.setState({ queryInput: target.value });
+  }
+
+  searchButton = async (event) => {
+    event.preventDefault();
+    const { queryInput } = this.state;
+    const { results } = await api.getProductsFromCategoryAndQuery('MLB5672', queryInput);
+    this.setState({ searchedProducts: results });
   }
 
   render() {
@@ -25,7 +34,7 @@ class Home extends Component {
                 data-testid="query-input"
                 type="text"
               />
-              <button type="submit">Pesquisar</button>
+              <button type="submit" onClick={ this.searchButton }>Pesquisar</button>
             </div>
           </label>
 
