@@ -11,8 +11,8 @@ export default class Product extends Component {
         </div>
 
         <div className="product-details">
-          <span>{ title }</span>
-          <span>{ `R$ ${price}` }</span>
+          <span className="product-price">{ `R$ ${price}` }</span>
+          <span className="product-title">{ title }</span>
         </div>
       </div>
     );

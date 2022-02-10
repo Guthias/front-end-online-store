@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import Category from '../components/Category';
-import Header from '../components/Header';
 import * as api from '../services/api';
 import Product from '../components/Product';
+import SearchInput from '../components/SearchInput';
 
 class Home extends Component {
   state = {
@@ -26,39 +26,22 @@ class Home extends Component {
     const { queryInput, searchedProducts, searched } = this.state;
 
     return (
-      <main>
+      <main className="page-container">
         <Category />
-        <Header />
-        <form>
-          <label htmlFor="query-input" data-testid="home-initial-message">
-            Digite algum termo de pesquisa ou escolha uma categoria.
-            <div className="search-input">
-              <input
-                id="query-input"
-                value={ queryInput }
-                onChange={ this.handleChange }
-                data-testid="query-input"
-                type="text"
-              />
-              <button
-                type="submit"
-                onClick={ this.searchButton }
-                data-testid="query-button"
-              >
-                Pesquisar
-              </button>
-            </div>
-          </label>
-
+        <div className="page-content">
+          <SearchInput
+            inputValue={ queryInput }
+            inputChange={ this.handleChange }
+            buttonSubmit={ this.searchButton }
+          />
           <div className="product-area">
             { searchedProducts.length > 0
               ? searchedProducts
                 .map((product) => <Product key={ product.id } { ...product } />)
               : searched && <span>Nenhum produto foi encontrado</span> }
           </div>
-        </form>
+        </div>
       </main>
-
     );
   }
 }
