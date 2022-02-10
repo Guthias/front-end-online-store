@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Category from '../components/Category';
 import * as api from '../services/api';
 import Product from '../components/Product';
+import SearchInput from '../components/SearchInput';
 
 class Home extends Component {
   state = {
