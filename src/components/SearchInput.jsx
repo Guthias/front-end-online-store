@@ -1,4 +1,5 @@
 import React from 'react';
+import ProtoTypes from 'prop-types';
 
 export default function SearchInput() {
   const { inputValue, inputChange, buttonSubmit } = props;
@@ -21,3 +22,9 @@ export default function SearchInput() {
     </div>
   );
 }
+
+SearchInput.propTypes = {
+  inputValue: ProtoTypes.string.isRequired,
+  inputChange: ProtoTypes.func.isRequired,
+  buttonSubmit: ProtoTypes.func.isRequired,
+};
