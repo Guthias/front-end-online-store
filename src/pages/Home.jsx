@@ -29,27 +29,11 @@ class Home extends Component {
       <main className="page-container">
         <Category />
         <div className="page-content">
-          <form>
-            <label htmlFor="query-input" data-testid="home-initial-message">
-              Digite algum termo de pesquisa ou escolha uma categoria.
-              <div className="search-input">
-                <input
-                  id="query-input"
-                  value={ queryInput }
-                  onChange={ this.handleChange }
-                  data-testid="query-input"
-                  type="text"
-                />
-                <button
-                  type="submit"
-                  onClick={ this.searchButton }
-                  data-testid="query-button"
-                >
-                  Pesquisar
-                </button>
-              </div>
-            </label>
-          </form>
+          <SearchInput
+            inputValue={ queryInput }
+            inputChange={ this.handleChange }
+            buttonSubmit={ this.searchButton }
+          />
           <div className="product-area">
             { searchedProducts.length > 0
               ? searchedProducts
