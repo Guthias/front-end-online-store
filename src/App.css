@@ -1,6 +1,11 @@
-.page-content {
+.page-container {
   display: flex;
   flex-direction: row;
+}
+
+.page-content {
+  display: flex;
+  flex-direction: column;
 }
 
 .category-list {
