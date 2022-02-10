@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Category from '../components/Category';
 import Header from '../components/Header';
 import * as api from '../services/api';
 import Product from '../components/Product';
@@ -26,6 +27,7 @@ class Home extends Component {
 
     return (
       <main>
+        <Category />
         <Header />
         <form>
           <label htmlFor="query-input" data-testid="home-initial-message">
