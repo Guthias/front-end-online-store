@@ -25,7 +25,7 @@ class Home extends Component {
     const { queryInput, searchedProducts, searched } = this.state;
 
     return (
-      <main>
+      <main className="page-content">
         <Category />
         <form>
           <label htmlFor="query-input" data-testid="home-initial-message">
