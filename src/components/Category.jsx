@@ -1,30 +1,21 @@
 import React, { Component } from 'react';
 import * as api from '../services/api';
-import Product from './Product';
 
 class Category extends Component {
     state = {
       allCategory: [],
-      allProduct: [],
-
     };
 
   componentDidMount = async () => {
     this.setState({
       allCategory: await api.getCategories(),
-
     });
   }
 
-  handleClick = async ({ target }) => {
-    const { results } = await api.getCategoriesId(target.value);
-    this.setState({
-      allProduct: results,
-    });
-  };
-
   render() {
-    const { allCategory, allProduct } = this.state;
+    const { allCategory } = this.state;
+    const { categoryClick } = this.props;
+
     return (
       <div>
         <div className="category-list">
@@ -35,15 +26,10 @@ class Category extends Component {
                 id={ elem.id }
                 value={ elem.id }
                 name="category"
-                onChange={ this.handleClick }
+                onChange={ categoryClick }
                 type="radio"
               />
             </label>
-          ))}
-        </div>
-        <div>
-          {allProduct.map((product) => (
-            <Product key={ product.id } { ...product } />
           ))}
         </div>
       </div>
