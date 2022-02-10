@@ -31,15 +31,16 @@ render() {
     <div>
       <ul>
         { allCategory.map((elem) => (
-          <li key={ elem.id } data-testid="category">
+          <label htmlFor={ elem.id } key={ elem.id } data-testid="category">
             { elem.name }
             <input
+              id={ elem.id }
               value={ elem.id }
               name="category"
               onChange={ this.handleClick }
               type="radio"
             />
-          </li>
+          </label>
         ))}
       </ul>
       <div>
