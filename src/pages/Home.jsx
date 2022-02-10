@@ -9,16 +9,25 @@ class Home extends Component {
     queryInput: '',
     searchedProducts: [],
     searched: false,
+    category: '',
   }
 
   handleChange = ({ target }) => {
     this.setState({ queryInput: target.value });
   }
 
+  handleCategory = async ({ target }) => {
+    const { results } = await api.getCategoriesId(target.value);
+    this.setState({
+      searchedProducts: results,
+      category: target.value,
+    });
+  };
+
   searchButton = async (event) => {
     event.preventDefault();
-    const { queryInput } = this.state;
-    const { results } = await api.getProductsFromCategoryAndQuery('MLB5672', queryInput);
+    const { queryInput, category } = this.state;
+    const { results } = await api.getProductsFromCategoryAndQuery(category, queryInput);
     this.setState({ searchedProducts: results, searched: true });
   }
 
@@ -27,7 +36,7 @@ class Home extends Component {
 
     return (
       <main className="page-container">
-        <Category />
+        <Category categoryClick={ this.handleCategory } />
         <div className="page-content">
           <SearchInput
             inputValue={ queryInput }
