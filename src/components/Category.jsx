@@ -16,8 +16,8 @@ class Category extends Component {
   render() {
     const { allCategory } = this.state;
     return (
-      <div>
-        <ul>
+      <sidebar>
+        <ul className="category-list">
           { allCategory.map((elem) => (
             <li key={ elem.id } data-testid="category">
               { elem.name }
@@ -25,7 +25,7 @@ class Category extends Component {
             </li>
           ))}
         </ul>
-      </div>
+      </sidebar>
 
     );
   }
