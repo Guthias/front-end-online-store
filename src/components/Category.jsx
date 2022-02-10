@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
 import * as api from '../services/api';
+import Product from './Product';
 
 class Category extends Component {
     state = {
       allCategory: [],
+      allProduct: [],
 
     };
 
@@ -15,20 +17,16 @@ class Category extends Component {
   }
 
 handleClick = async ({ target }) => {
-  const { allCategory } = this.state;
-  // allCategory.find((element) => {
-  //   target.value
-  // })
-  console.log(target.value);
-  console.log(allCategory);
-  // target.value === on && this.setState({})
-  // this.setState({ value: true });
-  // const listProducts = await getCategoriesId(categoryId);
-  // console.log(listProducts);
+  const getProducts = await api.getCategoriesId(target.value);
+  console.log(getProducts.results);
+  this.setState({
+    allProduct: getProducts.results,
+  });
 };
 
 render() {
-  const { allCategory } = this.state;
+  const { allCategory, allProduct } = this.state;
+  console.log(allProduct);
   return (
     <div>
       <ul>
@@ -44,6 +42,11 @@ render() {
           </li>
         ))}
       </ul>
+      <div>
+        {allProduct.map((product) => (
+          <Product key={ product.id } { ...product } />
+        ))}
+      </div>
     </div>
 
   );
