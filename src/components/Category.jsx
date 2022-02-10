@@ -26,7 +26,6 @@ handleClick = async ({ target }) => {
 
 render() {
   const { allCategory, allProduct } = this.state;
-  console.log(allProduct);
   return (
     <div>
       <ul>
