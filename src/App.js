@@ -1,4 +1,5 @@
 import React from 'react';
+import { BrowserRouter } from 'react-router-dom';
 import Content from './components/Content';
 import Header from './components/Header';
 import './App.css';
@@ -6,10 +7,10 @@ import './App.css';
 class App extends React.Component {
   render() {
     return (
-      <>
+      <BrowserRouter>
         <Header />
         <Content />
-      </>
+      </BrowserRouter>
     );
   }
 }
