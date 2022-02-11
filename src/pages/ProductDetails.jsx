@@ -41,8 +41,9 @@ export default class Product extends Component {
   }
 }
 
-Product.propTypes = { match: Prototypes.shape({
+Product.propTypes = {
   params: Prototypes.shape({
     id: Prototypes.string.isRequired,
   }).isRequired,
-}).isRequired };
+  addToCart: Prototypes.func.isRequired,
+};
