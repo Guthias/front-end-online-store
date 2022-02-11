@@ -42,4 +42,9 @@ class ShoppingCart extends React.Component {
     );
   }
 }
+
+ShoppingCart.propTypes = {
+  cart: PropTypes.arrayOf(PropTypes.string).isRequired,
+};
+
 export default ShoppingCart;
