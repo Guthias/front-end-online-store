@@ -23,20 +23,24 @@ class ShoppingCart extends React.Component {
       loading ? <p>Carregando...</p>
         : (
           <div>
-            <h3 data-testid="shopping-cart-product-quantity">
-              { `Quantidade Total de Produtos: ${cart.length}` }
-            </h3>
-
-            {cart.length ? productDetails
-              .map((product) => (
-                <ProductCart
-                  key={ product.id }
-                  { ...product }
-                />))
-              : (
-                <h2 data-testid="shopping-cart-empty-message">
-                  Seu carrinho está vazio
-                </h2>)}
+            {
+              cart.length ? (
+                <h2 data-testid="shopping-cart-product-quantity">
+                  { `Quantidade Total de Produtos: ${cart.length}` }
+                </h2>)
+                : (
+                  <h2 data-testid="shopping-cart-empty-message">
+                    Seu carrinho está vazio
+                  </h2>)
+            }
+            {
+              cart.length && productDetails
+                .map((product) => (
+                  <ProductCart
+                    key={ product.id }
+                    { ...product }
+                  />))
+            }
           </div>
         )
     );

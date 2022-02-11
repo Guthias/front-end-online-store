@@ -7,7 +7,7 @@ export default class ProductCart extends Component {
     return (
       <div>
         <div>
-          <img src={ thumbnail } alt="" />
+          <img src={ thumbnail } alt={ title } />
         </div>
         <div data-testid="shopping-cart-product-name">
           { title }
