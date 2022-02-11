@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Prototypes from 'prop-types';
 import * as api from '../services/api';
 
 export default class Product extends Component {
@@ -7,7 +8,7 @@ export default class Product extends Component {
   }
 
   async componentDidMount() {
-    const { match: { params: { id }}} = this.props;
+    const { match: { params: { id } } } = this.props;
     this.setState({ productDetails: await api.getProductDetails(id) });
   }
 
@@ -20,3 +21,9 @@ export default class Product extends Component {
     );
   }
 }
+
+Product.propTypes = { match: Prototypes.shape({
+  params: Prototypes.shape({
+    id: Prototypes.string.isRequired,
+  }).isRequired,
+}).isRequired };
