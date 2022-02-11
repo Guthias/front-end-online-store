@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 export default class ProductCart extends Component {
   render() {
-    const { thumbnail, title, price } = this.props;
+    const { thumbnail, title, price, cartLength } = this.props;
     return (
       <div>
         <div>
