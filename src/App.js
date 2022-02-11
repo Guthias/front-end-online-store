@@ -5,18 +5,19 @@ import Header from './components/Header';
 import './App.css';
 
 class App extends React.Component {
+  state = {
+    cart: [],
+  }
+
   addToCart = (id) => {
-    console.log(id);
+    const { cart } = this.state;
+    this.setState({ cart: [...cart, id] });
   }
 
   render() {
+    const { cart } = this.state;
     return (
       <BrowserRouter>
         <Header />
-        <Content addToCart={ this.addToCart } />
-      </BrowserRouter>
-    );
-  }
-}
-
-export default App;
+        <Content addToCart={ this.addToCart } cart={ cart } />
+      </Br
