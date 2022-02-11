@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Switch, Route } from 'react-router-dom';
 import Home from '../pages/Home';
 import ShoppingCart from '../pages/ShoppingCart';
-import Product from '../pages/Product';
+import ProductDetails from '../pages/ProductDetails';
 
 export default class Content extends Component {
   render() {
@@ -10,7 +10,7 @@ export default class Content extends Component {
       <Switch>
         <Route exact path="/" component={ Home } />
         <Route path="/ShoppingCart" component={ ShoppingCart } />
-        <Route path="/Product/:id" component={ Product } />
+        <Route path="/Product/:id" component={ ProductDetails } />
       </Switch>
     );
   }
