@@ -9,12 +9,13 @@ export default class Product extends Component {
   }
 
   async componentDidMount() {
-    const { match: { params: { id } } } = this.props;
+    const { params: { id } } = this.props;
     this.setState({ productDetails: await api.getProductDetails(id), loading: false });
   }
 
   render() {
-    const { loading, productDetails: { title, price, pictures } } = this.state;
+    const { loading, productDetails: { title, price, pictures, id } } = this.state;
+    const { addToCart } = this.props;
 
     return (
       loading ? <p>Carregando...</p>
@@ -27,6 +28,13 @@ export default class Product extends Component {
               <h2 data-testid="product-detail-name">{ title }</h2>
               <h3 className="product-price">{ `R$ ${price.toFixed(2)}` }</h3>
             </div>
+            <button
+              type="button"
+              data-testid="product-detail-add-to-cart"
+              onClick={ () => addToCart(id) }
+            >
+              Adicionar no carrinho
+            </button>
           </div>
         )
     );
