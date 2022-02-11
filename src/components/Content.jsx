@@ -6,11 +6,11 @@ import ProductDetails from '../pages/ProductDetails';
 
 export default class Content extends Component {
   render() {
-    const { addToCart } = this.props;
+    const { addToCart, cart } = this.props;
     return (
       <Switch>
         <Route exact path="/" render={ () => <Home addToCart={ addToCart } /> } />
-        <Route path="/ShoppingCart" component={ ShoppingCart } />
+        <Route path="/ShoppingCart" render={ () => <ShoppingCart cart={ cart } /> } />
         <Route path="/Product/:id" component={ ProductDetails } />
       </Switch>
     );

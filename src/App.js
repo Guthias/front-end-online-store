@@ -20,4 +20,9 @@ class App extends React.Component {
       <BrowserRouter>
         <Header />
         <Content addToCart={ this.addToCart } cart={ cart } />
-      </Br
+      </BrowserRouter>
+    );
+  }
+}
+
+export default App;
