@@ -12,10 +12,10 @@ export default class Product extends Component {
   }
 
   render() {
-    const { title } = this.state.productDetails;
+    const { productDetails: { title } } = this.state;
     return (
       <div>
-        <h2 datatest-id="product-detail-name">{ title }</h2>
+        <h2 data-testid="product-detail-name">{ title }</h2>
       </div>
     );
   }
