@@ -5,11 +5,15 @@ import Header from './components/Header';
 import './App.css';
 
 class App extends React.Component {
+  addToCart = (id) => {
+    console.log(id);
+  }
+
   render() {
     return (
       <BrowserRouter>
         <Header />
-        <Content />
+        <Content addToCart={ this.addToCart } />
       </BrowserRouter>
     );
   }

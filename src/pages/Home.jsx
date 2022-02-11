@@ -33,6 +33,7 @@ class Home extends Component {
 
   render() {
     const { queryInput, searchedProducts, searched } = this.state;
+    const { addToCart } = this.props;
 
     return (
       <main className="page-container">
@@ -46,7 +47,7 @@ class Home extends Component {
           <div className="product-area">
             { searchedProducts.length > 0
               ? searchedProducts
-                .map((product) => <Product key={ product.id } { ...product } />)
+                .map((product) => <Product key={ product.id } { ...product } addToCart={ addToCart } />)
               : searched && <span>Nenhum produto foi encontrado</span> }
           </div>
         </div>

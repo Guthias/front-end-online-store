@@ -6,9 +6,10 @@ import ProductDetails from '../pages/ProductDetails';
 
 export default class Content extends Component {
   render() {
+    const { addToCart } = this.props;
     return (
       <Switch>
-        <Route exact path="/" component={ Home } />
+        <Route exact path="/" render={ () => <Home addToCart={ addToCart } /> } />
         <Route path="/ShoppingCart" component={ ShoppingCart } />
         <Route path="/Product/:id" component={ ProductDetails } />
       </Switch>
