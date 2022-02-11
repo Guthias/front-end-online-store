@@ -2,13 +2,13 @@ import React, { Component } from 'react';
 
 export default class ProductCart extends Component {
   render() {
-    const { pictures, title, price } = this.props;
+    const { thumbnail, title, price } = this.props;
     return (
       <div>
         <div>
-          <img src={ pictures } alt="" />
+          <img src={ thumbnail } alt="" />
         </div>
-        <div datatest-id="shopping-cart-product-name">
+        <div data-testid="shopping-cart-product-name">
           { title }
         </div>
         <div>
