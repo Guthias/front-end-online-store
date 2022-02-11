@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import ProductCart from '../components/ProductCart';
 import * as api from '../services/api';
 
@@ -34,7 +35,7 @@ class ShoppingCart extends React.Component {
                   </h2>)
             }
             {
-              cart.length && productDetails
+              cart.length > 0 && productDetails
                 .map((product) => (
                   <ProductCart
                     key={ product.id }

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import Category from '../components/Category';
 import * as api from '../services/api';
 import Product from '../components/Product';
