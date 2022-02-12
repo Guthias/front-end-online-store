@@ -13,7 +13,13 @@ export default class Content extends Component {
       <Switch>
         <Route exact path="/" render={ () => <Home addToCart={ addToCart } /> } />
         <Route path="/ShoppingCart" render={ () => <ShoppingCart cart={ cart } /> } />
-        <Route path="/Product/:id" component={ ProductDetails } />
+        <Route
+          path="/Product/:id"
+          render={ ({ match }) => (<ProductDetails
+            addToCart={ addToCart }
+            { ...match }
+          />) }
+        />
       </Switch>
     );
   }
