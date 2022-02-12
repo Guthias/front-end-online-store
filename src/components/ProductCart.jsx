@@ -23,7 +23,7 @@ export default class ProductCart extends Component {
           >
             -
           </button>
-          { quantity }
+          <span data-testid="shopping-cart-product-quantity">{ quantity }</span>
           <button
             type="button"
             data-testid="product-increase-quantity"

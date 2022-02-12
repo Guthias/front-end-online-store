@@ -19,7 +19,6 @@ class ShoppingCart extends React.Component {
     const productResults = promiseResolved.map(({ results }) => results);
 
     const cartMap = cart.map(({ id }) => id);
-    console.log(productResults);
     const productDetails = productResults
       .reduce((acc, products, index) => {
         const product = products.find(({ id }) => id === cartMap[index]);
@@ -28,7 +27,6 @@ class ShoppingCart extends React.Component {
         }
         return acc;
       }, []);
-
     this.setState({ productDetails, loading: false });
   }
 
@@ -45,7 +43,6 @@ class ShoppingCart extends React.Component {
   render() {
     const { productDetails, loading } = this.state;
     const { cart, increaseCart, decreaseCart } = this.props;
-
     return (
       loading ? <p>Carregando...</p>
         : (
@@ -54,7 +51,7 @@ class ShoppingCart extends React.Component {
               cart.length ? (
                 <h2>
                   Quantidade Total de Produtos:
-                  <span data-testid="shopping-cart-product-quantity">
+                  <span>
                     {this.countCartItems()}
                   </span>
                 </h2>)
