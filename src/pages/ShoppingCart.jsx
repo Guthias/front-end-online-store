@@ -21,6 +21,11 @@ class ShoppingCart extends React.Component {
     return cart.reduce((acc, { quantity }) => acc + quantity, 0);
   }
 
+  checkCartQuantity = (productId) => {
+    const { cart } = this.props;
+    return cart.find(({ id }) => id === productId).quantity;
+  }
+
   render() {
     const { productDetails, loading } = this.state;
     const { cart } = this.props;
@@ -45,6 +50,7 @@ class ShoppingCart extends React.Component {
                   <ProductCart
                     key={ product.id }
                     { ...product }
+                    quantity={ this.checkCartQuantity(product.id) }
                   />))
             }
           </div>
