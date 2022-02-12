@@ -13,7 +13,7 @@ export default class ProductCart extends Component {
           { title }
         </div>
         <div>
-          { price }
+          { `R$ ${price.toFixed(2)}` }
         </div>
       </div>
     );
