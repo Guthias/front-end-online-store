@@ -7,12 +7,12 @@ import ProductDetails from '../pages/ProductDetails';
 
 export default class Content extends Component {
   render() {
-    const { addToCart, cart } = this.props;
+    const { addToCart } = this.props;
 
     return (
       <Switch>
         <Route exact path="/" render={ () => <Home addToCart={ addToCart } /> } />
-        <Route path="/ShoppingCart" render={ () => <ShoppingCart cart={ cart } /> } />
+        <Route path="/ShoppingCart" render={ () => <ShoppingCart { ...this.props } /> } />
         <Route
           path="/Product/:id"
           render={ ({ match }) => (<ProductDetails
@@ -27,8 +27,4 @@ export default class Content extends Component {
 
 Content.propTypes = {
   addToCart: PropTypes.func.isRequired,
-  cart: PropTypes.arrayOf(PropTypes.shape({
-    id: PropTypes.string.isRequired,
-    quantity: PropTypes.number.isRequired,
-  })).isRequired,
 };

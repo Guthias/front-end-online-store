@@ -27,12 +27,27 @@ class App extends React.Component {
     this.setState({ cart: newCart });
   };
 
+  increaseCart = (productId, maxQuantity) => {
+    const { cart } = this.state;
+    const newCart = [...cart];
+    const productOnCart = newCart.find(({ id }) => productId === id);
+    console.log(maxQuantity);
+    if (productOnCart.quantity + 1 <= maxQuantity) {
+      productOnCart.quantity += 1;
+      this.setState({ cart: newCart });
+    }
+  }
+
   render() {
     const { cart } = this.state;
     return (
       <BrowserRouter>
         <Header />
-        <Content addToCart={ this.addToCart } cart={ cart } />
+        <Content
+          addToCart={ this.addToCart }
+          cart={ cart }
+          increaseCart={ this.increaseCart }
+        />
       </BrowserRouter>
     );
   }
