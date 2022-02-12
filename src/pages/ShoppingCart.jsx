@@ -11,7 +11,7 @@ class ShoppingCart extends React.Component {
 
   async componentDidMount() {
     const { cart } = this.props;
-    const productPromises = cart.map((id) => api.getProductDetails(id));
+    const productPromises = cart.map(({ id }) => api.getProductDetails(id));
     const productDetails = await Promise.all(productPromises);
     this.setState({ productDetails, loading: false });
   }
