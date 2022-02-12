@@ -36,8 +36,11 @@ class ShoppingCart extends React.Component {
           <div>
             {
               cart.length ? (
-                <h2 data-testid="shopping-cart-product-quantity">
-                  { `Quantidade Total de Produtos: ${this.countCartItems()}` }
+                <h2>
+                  Quantidade Total de Produtos:
+                  <span data-testid="shopping-cart-product-quantity">
+                    {this.countCartItems()}
+                  </span>
                 </h2>)
                 : (
                   <h2 data-testid="shopping-cart-empty-message">
