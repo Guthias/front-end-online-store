@@ -16,6 +16,11 @@ class ShoppingCart extends React.Component {
     this.setState({ productDetails, loading: false });
   }
 
+  countCartItems = () => {
+    const { cart } = this.props;
+    return cart.reduce((acc, { quantity }) => acc + quantity, 0);
+  }
+
   render() {
     const { productDetails, loading } = this.state;
     const { cart } = this.props;
@@ -27,7 +32,7 @@ class ShoppingCart extends React.Component {
             {
               cart.length ? (
                 <h2 data-testid="shopping-cart-product-quantity">
-                  { `Quantidade Total de Produtos: ${cart.length}` }
+                  { `Quantidade Total de Produtos: ${this.countCartItems()}` }
                 </h2>)
                 : (
                   <h2 data-testid="shopping-cart-empty-message">
