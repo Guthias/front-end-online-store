@@ -9,19 +9,20 @@ class App extends React.Component {
     cart: [],
   }
 
-  newCartItem = (productId) => ({
+  newCartItem = (productId, productTitle) => ({
     id: productId,
+    title: productTitle,
     quantity: 1,
   })
 
-  addToCart = (productId) => {
+  addToCart = (productId, productTitle) => {
     const { cart } = this.state;
     const newCart = [...cart];
     let productOnCart = newCart.find(({ id }) => productId === id);
     if (productOnCart) {
       this.increaseCart(productId);
     } else {
-      productOnCart = this.newCartItem(productId);
+      productOnCart = this.newCartItem(productId, productTitle);
       newCart.push(productOnCart);
     }
     this.setState({ cart: newCart });

@@ -11,8 +11,24 @@ class ShoppingCart extends React.Component {
 
   async componentDidMount() {
     const { cart } = this.props;
-    const productPromises = cart.map(({ id }) => api.getProductDetails(id));
-    const productDetails = await Promise.all(productPromises);
+    // const productPromises = cart.map(({ id }) => api.getProductDetails(id));
+    // const productDetails = await Promise.all(productPromises);
+
+    const productPromises = cart.map(({ title }) => api.getProductQuery(title));
+    const promiseResolved = await Promise.all(productPromises);
+    const productResults = promiseResolved.map(({ results }) => results);
+
+    const cartMap = cart.map(({ id }) => id);
+    console.log(productResults);
+    const productDetails = productResults
+      .reduce((acc, products, index) => {
+        const product = products.find(({ id }) => id === cartMap[index]);
+        if (product) {
+          acc.push(product);
+        }
+        return acc;
+      }, []);
+
     this.setState({ productDetails, loading: false });
   }
 

@@ -20,7 +20,7 @@ export default class Product extends Component {
         <button
           data-testid="product-add-to-cart"
           type="button"
-          onClick={ () => addToCart(id) }
+          onClick={ () => addToCart(id, title) }
         >
           Adicionar ao Carrinho
         </button>
