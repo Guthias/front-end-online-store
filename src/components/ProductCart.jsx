@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 export default class ProductCart extends Component {
   render() {
-    const { thumbnail, title, price, quantity, increaseCart } = this.props;
+    const { thumbnail, title, price, quantity, increaseCart, decreaseCart } = this.props;
     return (
       <div>
         <div>
@@ -19,6 +19,7 @@ export default class ProductCart extends Component {
           <button
             type="button"
             data-testid="product-decrease-quantity"
+            onClick={ decreaseCart }
           >
             -
           </button>
@@ -42,4 +43,5 @@ ProductCart.propTypes = {
   price: PropTypes.number.isRequired,
   quantity: PropTypes.number.isRequired,
   increaseCart: PropTypes.func.isRequired,
+  decreaseCart: PropTypes.func.isRequired,
 };

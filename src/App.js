@@ -27,11 +27,20 @@ class App extends React.Component {
     this.setState({ cart: newCart });
   };
 
+  decreaseCart = (productId) => {
+    const { cart } = this.state;
+    const newCart = [...cart];
+    const productOnCart = newCart.find(({ id }) => productId === id);
+    if (productOnCart.quantity - 1 >= 1) {
+      productOnCart.quantity -= 1;
+      this.setState({ cart: newCart });
+    }
+  }
+
   increaseCart = (productId, maxQuantity) => {
     const { cart } = this.state;
     const newCart = [...cart];
     const productOnCart = newCart.find(({ id }) => productId === id);
-    console.log(maxQuantity);
     if (productOnCart.quantity + 1 <= maxQuantity) {
       productOnCart.quantity += 1;
       this.setState({ cart: newCart });
@@ -47,6 +56,7 @@ class App extends React.Component {
           addToCart={ this.addToCart }
           cart={ cart }
           increaseCart={ this.increaseCart }
+          decreaseCart={ this.decreaseCart }
         />
       </BrowserRouter>
     );

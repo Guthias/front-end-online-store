@@ -28,7 +28,7 @@ class ShoppingCart extends React.Component {
 
   render() {
     const { productDetails, loading } = this.state;
-    const { cart, increaseCart } = this.props;
+    const { cart, increaseCart, decreaseCart } = this.props;
 
     return (
       loading ? <p>Carregando...</p>
@@ -53,6 +53,7 @@ class ShoppingCart extends React.Component {
                     increaseCart={
                       () => increaseCart(product.id, product.available_quantity)
                     }
+                    decreaseCart={ () => decreaseCart(product.id) }
                     quantity={ this.checkCartQuantity(product.id) }
                   />))
             }
@@ -68,6 +69,7 @@ ShoppingCart.propTypes = {
     quantity: PropTypes.number.isRequired,
   })).isRequired,
   increaseCart: PropTypes.func.isRequired,
+  decreaseCart: PropTypes.func.isRequired,
 };
 
 export default ShoppingCart;
