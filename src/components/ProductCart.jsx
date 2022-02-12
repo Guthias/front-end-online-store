@@ -38,5 +38,6 @@ export default class ProductCart extends Component {
 ProductCart.propTypes = {
   thumbnail: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
-  price: PropTypes.string.isRequired,
+  price: PropTypes.number.isRequired,
+  quantity: PropTypes.number.isRequired,
 };

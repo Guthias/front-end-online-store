@@ -21,5 +21,8 @@ export default class Content extends Component {
 
 Content.propTypes = {
   addToCart: PropTypes.func.isRequired,
-  cart: PropTypes.arrayOf(PropTypes.string).isRequired,
+  cart: PropTypes.arrayOf(PropTypes.shape({
+    id: PropTypes.string.isRequired,
+    quantity: PropTypes.number.isRequired,
+  })).isRequired,
 };
