@@ -4,12 +4,15 @@
 }
 
 .page-content {
+  align-items: center;
+  background-color: #ddd;
   display: flex;
   flex-direction: column;
+  padding: 20px 0;
+  width: 100%;
 }
 
 .product-area {
-  background-color: #ddd;
   display: flex;
   flex-flow: row wrap;
   justify-content: space-evenly;
