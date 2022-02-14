@@ -19,9 +19,7 @@ export default class Product extends Component {
           </div>
           <div>
             {
-              freeShipping ? (
-                <span data-testid="free-shipping">Frete Grátis</span>
-              ) : null
+              freeShipping && <span data-testid="free-shipping">Frete Grátis</span>
             }
           </div>
         </Link>
