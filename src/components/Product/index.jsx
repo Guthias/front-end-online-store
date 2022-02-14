@@ -8,7 +8,7 @@ export default class Product extends Component {
     const { title, price, thumbnail, id, addToCart } = this.props;
     return (
       <div className="product" data-testid="product">
-        <Link to={ `product/${id}` } data-testid="product-detail-link">
+        <Link to={ `product/${id}` } data-testid="product-detail-link" className="product-info">
           <div className="product-area-image">
             <img className="product-image" src={ thumbnail } alt={ title } />
           </div>
@@ -21,6 +21,7 @@ export default class Product extends Component {
         <button
           data-testid="product-add-to-cart"
           type="button"
+          className="product-button"
           onClick={ () => addToCart(id) }
         >
           Adicionar ao Carrinho

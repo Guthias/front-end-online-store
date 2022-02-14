@@ -22,39 +22,3 @@
   flex-flow: row wrap;
   justify-content: space-evenly;
 }
-
-.product {
-  border: 1px solid black;
-  display: flex;
-  flex-direction: column;
-  height: 320px;
-  margin-bottom: 20px;
-  width: 200px;
-}
-
-.product-area-image {
-  height: 200px;
-  position: relative;
-  width: 100%;
-}
-
-.product-image {
-  height: 100%;
-  object-fit: cover;
-  width: 100%;
-}
-
-.product-details {
-  display: flex;
-  flex-direction: column;
-}
-
-.product-price {
-  font-size: 18px;
-  font-weight: 700;
-}
-
-.product-title {
-  align-self: flex-end;
-  margin-top: 20px;
-}
