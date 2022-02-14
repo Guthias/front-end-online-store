@@ -9,9 +9,43 @@ class App extends React.Component {
     cart: [],
   }
 
-  addToCart = (id) => {
+  newCartItem = (productId, productTitle) => ({
+    id: productId,
+    title: productTitle,
+    quantity: 1,
+  })
+
+  addToCart = (productId, productTitle) => {
     const { cart } = this.state;
-    this.setState({ cart: [...cart, id] });
+    const newCart = [...cart];
+    let productOnCart = newCart.find(({ id }) => productId === id);
+    if (productOnCart) {
+      this.increaseCart(productId);
+    } else {
+      productOnCart = this.newCartItem(productId, productTitle);
+      newCart.push(productOnCart);
+    }
+    this.setState({ cart: newCart });
+  };
+
+  decreaseCart = (productId) => {
+    const { cart } = this.state;
+    const newCart = [...cart];
+    const productOnCart = newCart.find(({ id }) => productId === id);
+    if (productOnCart.quantity - 1 >= 1) {
+      productOnCart.quantity -= 1;
+      this.setState({ cart: newCart });
+    }
+  }
+
+  increaseCart = (productId, maxQuantity) => {
+    const { cart } = this.state;
+    const newCart = [...cart];
+    const productOnCart = newCart.find(({ id }) => productId === id);
+    if (productOnCart.quantity + 1 <= maxQuantity) {
+      productOnCart.quantity += 1;
+      this.setState({ cart: newCart });
+    }
   }
 
   render() {
@@ -19,7 +53,12 @@ class App extends React.Component {
     return (
       <BrowserRouter>
         <Header />
-        <Content addToCart={ this.addToCart } cart={ cart } />
+        <Content
+          addToCart={ this.addToCart }
+          cart={ cart }
+          increaseCart={ this.increaseCart }
+          decreaseCart={ this.decreaseCart }
+        />
       </BrowserRouter>
     );
   }
