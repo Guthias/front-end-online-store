@@ -1,5 +1,6 @@
 import React from 'react';
 import ProtoTypes from 'prop-types';
+import './style.css';
 
 export default function SearchInput(props) {
   const { inputValue, inputChange, buttonSubmit } = props;
