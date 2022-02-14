@@ -38,14 +38,19 @@
 }
 
 .product-button {
-  background-color: blue;
+  background-color: #1488cc;
   border: none;
   color: white;
   cursor: pointer;
   font-size: 18px;
   font-weight: 700;
   padding: 10px;
+  transition: all ease-in-out 0.2s;
   width: 100%;
+}
+
+.product-button:hover {
+  background-color: #2b32b2;
 }
 
 .product-price {
