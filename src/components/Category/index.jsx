@@ -19,24 +19,22 @@ class Category extends Component {
     const { categoryClick } = this.props;
 
     return (
-      <div>
-        <div className="category-list">
-          { allCategory.map((elem) => (
-            <label htmlFor={ elem.id } key={ elem.id } data-testid="category">
-              <input
-                id={ elem.id }
-                value={ elem.id }
-                className="category-input"
-                name="category"
-                onChange={ categoryClick }
-                type="radio"
-              />
-              <span className="category-item">
-                { elem.name }
-              </span>
-            </label>
-          ))}
-        </div>
+      <div className="category-list">
+        { allCategory.map((elem) => (
+          <label htmlFor={ elem.id } key={ elem.id } data-testid="category">
+            <input
+              id={ elem.id }
+              value={ elem.id }
+              className="category-input"
+              name="category"
+              onChange={ categoryClick }
+              type="radio"
+            />
+            <span className="category-item">
+              { elem.name }
+            </span>
+          </label>
+        ))}
       </div>
     );
   }
