@@ -57,3 +57,12 @@
   font-size: 22px;
   font-weight: 700;
 }
+
+.free-shipping-icon {
+  margin-right: 5px;
+}
+
+.free-shipping {
+  color: #0f9b0f;
+  font-weight: 700;
+}

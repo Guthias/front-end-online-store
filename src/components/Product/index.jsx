@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
+import { FaTruck } from 'react-icons/fa';
 import './style.css';
 
 export default class Product extends Component {
   render() {
-    const { title, price, thumbnail, id, addToCart } = this.props;
+    const { title, price, thumbnail, id, addToCart,
+      shipping: { free_shipping: freeShipping } } = this.props;
     return (
       <div className="product" data-testid="product">
         <Link
@@ -18,6 +20,13 @@ export default class Product extends Component {
           </div>
 
           <div className="product-details">
+            {
+              freeShipping && (
+                <span data-testid="free-shipping" className="free-shipping">
+                  <FaTruck className="free-shipping-icon" />
+                  Frete Grátis
+                </span>)
+            }
             <span className="product-price">{ `R$ ${price}` }</span>
             <span className="product-title">{ title }</span>
           </div>
@@ -26,7 +35,7 @@ export default class Product extends Component {
           data-testid="product-add-to-cart"
           type="button"
           className="product-button"
-          onClick={ () => addToCart(id) }
+          onClick={ () => addToCart(id, title) }
         >
           Adicionar ao Carrinho
         </button>
@@ -41,4 +50,5 @@ Product.propTypes = {
   price: PropTypes.number.isRequired,
   thumbnail: PropTypes.string.isRequired,
   addToCart: PropTypes.func.isRequired,
+  shipping: PropTypes.objectOf.isRequired,
 };
