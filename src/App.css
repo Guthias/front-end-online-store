@@ -8,15 +8,6 @@
   flex-direction: column;
 }
 
-.category-list {
-  display: flex;
-  flex-direction: column;
-  list-style: none;
-  margin: 0;
-  min-width: 200px;
-  padding: 0 10px;
-}
-
 .product-area {
   background-color: #ddd;
   display: flex;
