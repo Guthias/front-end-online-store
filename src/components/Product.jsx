@@ -4,7 +4,8 @@ import { Link } from 'react-router-dom';
 
 export default class Product extends Component {
   render() {
-    const { title, price, thumbnail, id, addToCart } = this.props;
+    const { title, price, thumbnail, id, addToCart,
+      shipping: { free_shipping: freeShipping } } = this.props;
     return (
       <div className="product" data-testid="product">
         <Link to={ `product/${id}` } data-testid="product-detail-link">
@@ -15,6 +16,11 @@ export default class Product extends Component {
           <div className="product-details">
             <span className="product-price">{ `R$ ${price}` }</span>
             <span className="product-title">{ title }</span>
+          </div>
+          <div>
+            {
+              freeShipping && <span data-testid="free-shipping">Frete Grátis</span>
+            }
           </div>
         </Link>
         <button
@@ -35,4 +41,5 @@ Product.propTypes = {
   price: PropTypes.number.isRequired,
   thumbnail: PropTypes.string.isRequired,
   addToCart: PropTypes.func.isRequired,
+  shipping: PropTypes.objectOf.isRequired,
 };
