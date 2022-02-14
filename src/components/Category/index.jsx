@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import ProtoTypes from 'prop-types';
-import * as api from '../services/api';
+import * as api from '../../services/api';
+import './style.css';
 
 class Category extends Component {
     state = {
