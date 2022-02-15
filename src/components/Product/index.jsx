@@ -33,7 +33,7 @@ export default class Product extends Component {
                   Frete Grátis
                 </span>)
             }
-            <span className="product-price">{ `R$ ${price}` }</span>
+            <span className="product-price">{ `R$ ${price.toFixed(2)}` }</span>
             <span className="product-title">{ title }</span>
           </div>
         </Link>
