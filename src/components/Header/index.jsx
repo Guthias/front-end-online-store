@@ -25,9 +25,12 @@ class Header extends React.Component {
               className="cart-button"
             >
               <FaShoppingCart />
-              <div className="cart-quantity" data-testid="shopping-cart-size">
-                { cartSize }
-              </div>
+              {
+                cartSize > 0 && (
+                  <div className="cart-quantity" data-testid="shopping-cart-size">
+                    { cartSize }
+                  </div>)
+              }
             </button>
           </Link>
         </div>
