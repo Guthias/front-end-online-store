@@ -5,6 +5,8 @@ import { FaTruck } from 'react-icons/fa';
 import './style.css';
 
 export default class Product extends Component {
+  qualityImage = (thumbnail) => thumbnail.replace('I.jpg', 'O.jpg');
+
   render() {
     const { title, price, thumbnail, id, addToCart,
       shipping: { free_shipping: freeShipping } } = this.props;
@@ -16,7 +18,11 @@ export default class Product extends Component {
           className="product-info"
         >
           <div className="product-area-image">
-            <img className="product-image" src={ thumbnail } alt={ title } />
+            <img
+              className="product-image"
+              src={ this.qualityImage(thumbnail) }
+              alt={ title }
+            />
           </div>
 
           <div className="product-details">
