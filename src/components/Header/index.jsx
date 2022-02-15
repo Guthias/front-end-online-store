@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { FaShoppingCart } from 'react-icons/fa';
 import './style.css';
+import PropTypes from 'prop-types';
 
 class Header extends React.Component {
   render() {
@@ -38,4 +39,9 @@ class Header extends React.Component {
     );
   }
 }
+
+Header.propTypes = {
+  cartSize: PropTypes.number.isRequired,
+};
+
 export default Header;
