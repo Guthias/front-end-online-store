@@ -12,7 +12,7 @@ export default class Content extends Component {
     return (
       <Switch>
         <Route exact path="/" render={ () => <Home addToCart={ addToCart } /> } />
-        <Route path="/ShoppingCart" render={ () => <ShoppingCart { ...this.props } /> } />
+        <Route path="/cart" render={ () => <ShoppingCart { ...this.props } /> } />
         <Route
           path="/Product/:id"
           render={ ({ match }) => (<ProductDetails

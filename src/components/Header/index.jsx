@@ -16,7 +16,7 @@ class Header extends React.Component {
         <div className="header-cart-area">
           <Link
             data-testid="shopping-cart-button"
-            to="/ShoppingCart"
+            to="/cart"
           >
             <button
               type="button"
