@@ -5,6 +5,8 @@ import './style.css';
 
 class Header extends React.Component {
   render() {
+    const { cartSize } = this.props;
+
     return (
       <header>
         <div className="header-title-area">
@@ -23,6 +25,9 @@ class Header extends React.Component {
               className="cart-button"
             >
               <FaShoppingCart />
+              <div className="cart-quantity" data-testid="shopping-cart-size">
+                { cartSize }
+              </div>
             </button>
           </Link>
         </div>

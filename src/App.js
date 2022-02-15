@@ -48,11 +48,16 @@ class App extends React.Component {
     }
   }
 
+  cartSize = () => {
+    const { cart } = this.state;
+    return cart.reduce((acc, { quantity }) => acc + quantity, 0) || 0;
+  }
+
   render() {
     const { cart } = this.state;
     return (
       <BrowserRouter>
-        <Header />
+        <Header cartSize={ this.cartSize() }/>
         <Content
           addToCart={ this.addToCart }
           cart={ cart }
