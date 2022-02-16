@@ -5,6 +5,7 @@ export default class ProductValuation extends Component {
     email: '',
     review: '',
     rating: '',
+    valuations: [],
   }
 
   handleChange = ({ target }) => {
@@ -14,6 +15,17 @@ export default class ProductValuation extends Component {
   isInputChecked = (inputRating) => {
     const { rating } = this.state;
     return inputRating === rating;
+  }
+
+  saveReview = (event) => {
+    event.preventDefault();
+    const { email, review, rating, valuations } = this.state;
+    this.setState({
+      email: '',
+      review: '',
+      rating: '',
+      valuations: [...valuations, { email, review, rating }],
+    });
   }
 
   render() {
@@ -110,7 +122,9 @@ export default class ProductValuation extends Component {
               />
             </label>
           </div>
-          <button type="submit">Enviar Avaliação</button>
+          <button type="submit" onClick={ this.saveReview }>
+            Enviar Avaliação
+          </button>
         </form>
       </div>
     );
