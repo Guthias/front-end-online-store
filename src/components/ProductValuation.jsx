@@ -122,7 +122,11 @@ export default class ProductValuation extends Component {
               />
             </label>
           </div>
-          <button type="submit" onClick={ this.saveReview }>
+          <button
+            type="submit"
+            onClick={ this.saveReview }
+            data-testid="submit-review-btn"
+          >
             Enviar Avaliação
           </button>
         </form>
