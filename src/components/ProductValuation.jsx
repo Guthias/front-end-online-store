@@ -29,7 +29,7 @@ export default class ProductValuation extends Component {
   }
 
   render() {
-    const { email, review } = this.state;
+    const { email, review, valuations } = this.state;
 
     return (
       <div className="product-valuation">
@@ -126,6 +126,17 @@ export default class ProductValuation extends Component {
             Enviar Avaliação
           </button>
         </form>
+        <div className="product-reviews">
+          {
+            valuations.map((productReview) => (
+              <div key={ productReview.email } className="product-review">
+                <h4>{ productReview.email }</h4>
+                <p>{ productReview.review }</p>
+                <p>{ productReview.rating }</p>
+              </div>
+            ))
+          }
+        </div>
       </div>
     );
   }
