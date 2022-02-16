@@ -1,7 +1,24 @@
 import React, { Component } from 'react';
 
 export default class ProductValuation extends Component {
+  state = {
+    email: '',
+    review: '',
+    rating: '',
+  }
+
+  handleChange = ({ target }) => {
+    this.setState({ [target.name]: target.value });
+  }
+
+  isInputChecked = (inputRating) => {
+    const { rating } = this.state;
+    return inputRating === rating;
+  }
+
   render() {
+    const { email, review } = this.state;
+
     return (
       <div className="product-valuation">
         <h2>Opiniões sobre o Produto</h2>
@@ -11,7 +28,9 @@ export default class ProductValuation extends Component {
             <input
               id="user-valuation-email"
               type="text"
-              name="rating"
+              name="email"
+              onChange={ this.handleChange }
+              value={ email }
               data-testid="product-detail-email"
             />
           </label>
@@ -20,6 +39,8 @@ export default class ProductValuation extends Component {
             <textarea
               id="user-valuation-description"
               name="review"
+              value={ review }
+              onChange={ this.handleChange }
               data-testid="product-detail-evaluation"
             />
           </label>
@@ -30,6 +51,8 @@ export default class ProductValuation extends Component {
                 id="user-rating-1"
                 type="radio"
                 data-testid="1-rating"
+                checked={ this.isInputChecked('1') }
+                onChange={ this.handleChange }
                 name="rating"
                 value="1"
               />
@@ -41,6 +64,8 @@ export default class ProductValuation extends Component {
                 id="user-rating-2"
                 type="radio"
                 data-testid="2-rating"
+                checked={ this.isInputChecked('2') }
+                onChange={ this.handleChange }
                 name="rating"
                 value="2"
               />
@@ -52,6 +77,8 @@ export default class ProductValuation extends Component {
                 id="user-rating-3"
                 type="radio"
                 data-testid="3-rating"
+                checked={ this.isInputChecked('3') }
+                onChange={ this.handleChange }
                 name="rating"
                 value="3"
               />
@@ -63,6 +90,8 @@ export default class ProductValuation extends Component {
                 id="user-rating-4"
                 type="radio"
                 data-testid="4-rating"
+                checked={ this.isInputChecked('4') }
+                onChange={ this.handleChange }
                 name="rating"
                 value="4"
               />
@@ -74,6 +103,8 @@ export default class ProductValuation extends Component {
                 id="user-rating-5"
                 type="radio"
                 data-testid="5-rating"
+                checked={ this.isInputChecked('5') }
+                onChange={ this.handleChange }
                 name="rating"
                 value="5"
               />
