@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import Prototypes from 'prop-types';
+import * as api from '../services/api';
 
 export default class ProductValuation extends Component {
   state = {
@@ -6,6 +8,14 @@ export default class ProductValuation extends Component {
     review: '',
     rating: '',
     valuations: [],
+  }
+
+  saveReview = () => {
+    const { valuations } = this.state;
+    const { productId } = this.props;
+    const allReviews = api.getLocalStorage('review') || {};
+    allReviews[productId] = valuations;
+    api.saveLocalStorage('review', allReviews);
   }
 
   handleChange = ({ target }) => {
@@ -17,7 +27,7 @@ export default class ProductValuation extends Component {
     return inputRating === rating;
   }
 
-  saveReview = (event) => {
+  handleButton = (event) => {
     event.preventDefault();
     const { email, review, rating, valuations } = this.state;
     this.setState({
@@ -25,7 +35,7 @@ export default class ProductValuation extends Component {
       review: '',
       rating: '',
       valuations: [...valuations, { email, review, rating }],
-    });
+    }, this.saveReview);
   }
 
   render() {
@@ -124,7 +134,7 @@ export default class ProductValuation extends Component {
           </div>
           <button
             type="submit"
-            onClick={ this.saveReview }
+            onClick={ this.handleButton }
             data-testid="submit-review-btn"
           >
             Enviar Avaliação
@@ -145,3 +155,7 @@ export default class ProductValuation extends Component {
     );
   }
 }
+
+ProductValuation.propTypes = {
+  productId: Prototypes.string.isRequired,
+};

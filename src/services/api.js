@@ -33,8 +33,8 @@ export async function getProductQuery(query) {
   return data;
 }
 
-export const getLocalStorage = (key) => JSOn.parse(localStorage.getItem(key));
+export const getLocalStorage = (key) => JSON.parse(localStorage.getItem(key));
 
 export const saveLocalStorage = (key, item) => {
-  localStorage.setItem(key, JSON.stringfy(item));
+  localStorage.setItem(key, JSON.stringify(item));
 };

@@ -37,7 +37,7 @@ export default class Product extends Component {
               Adicionar no carrinho
             </button>
 
-            <ProductValuation />
+            <ProductValuation productId={ id } />
           </div>
         )
     );
