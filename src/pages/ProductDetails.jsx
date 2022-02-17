@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Prototypes from 'prop-types';
 import * as api from '../services/api';
+import ProductValuation from '../components/ProductValuation';
 
 export default class Product extends Component {
   state = {
@@ -35,6 +36,8 @@ export default class Product extends Component {
             >
               Adicionar no carrinho
             </button>
+
+            <ProductValuation productId={ id } />
           </div>
         )
     );
