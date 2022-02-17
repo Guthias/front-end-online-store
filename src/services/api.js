@@ -32,3 +32,9 @@ export async function getProductQuery(query) {
   const data = await response.json();
   return data;
 }
+
+export const getLocalStorage = (key) => JSON.parse(localStorage.getItem(key));
+
+export const saveLocalStorage = (key, item) => {
+  localStorage.setItem(key, JSON.stringify(item));
+};
