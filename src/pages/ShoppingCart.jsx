@@ -41,6 +41,11 @@ class ShoppingCart extends React.Component {
     return cart.find(({ id }) => id === productId).quantity;
   }
 
+  handleClickCart = () => {
+    const { productDetails } = this.state;
+    api.saveLocalStorage('cartProducts', productDetails);
+  }
+
   render() {
     const { productDetails, loading } = this.state;
     const { cart, increaseCart, decreaseCart } = this.props;
@@ -80,6 +85,7 @@ class ShoppingCart extends React.Component {
             >
               <button
                 type="button"
+                onClick={this.handleClickCart()}
               >
                 Finalizar Compra
               </button>
