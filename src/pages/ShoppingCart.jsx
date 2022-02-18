@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 import ProductCart from '../components/ProductCart';
 import * as api from '../services/api';
 
@@ -73,6 +74,17 @@ class ShoppingCart extends React.Component {
                     quantity={ this.checkCartQuantity(product.id) }
                   />))
             }
+            <Link
+              data-testid="checkout-products"
+              to="/Checkout"
+            >
+              <button
+                type="button"
+              >
+                Finalizar Compra
+              </button>
+            </Link>
+
           </div>
         )
     );
