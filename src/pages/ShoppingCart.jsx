@@ -85,7 +85,7 @@ class ShoppingCart extends React.Component {
             >
               <button
                 type="button"
-                onClick={this.handleClickCart()}
+                onClick={ this.handleClickCart() }
               >
                 Finalizar Compra
               </button>
