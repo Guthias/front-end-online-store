@@ -34,8 +34,8 @@ class App extends React.Component {
     } else {
       productOnCart = this.newCartItem(productId, productTitle);
       newCart.push(productOnCart);
+      this.updateCart(newCart);
     }
-    this.updateCart(newCart);
   };
 
   decreaseCart = (productId) => {
@@ -48,7 +48,7 @@ class App extends React.Component {
     }
   }
 
-  increaseCart = (productId, maxQuantity) => {
+  increaseCart = (productId, maxQuantity = Infinity) => {
     const { cart } = this.state;
     const newCart = [...cart];
     const productOnCart = newCart.find(({ id }) => productId === id);
