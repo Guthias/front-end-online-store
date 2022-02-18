@@ -67,7 +67,7 @@ class App extends React.Component {
     const { cart } = this.state;
     return (
       <BrowserRouter>
-        <Header cartSize={ this.cartSize() }/>
+        <Header cartSize={ this.cartSize() } />
         <Content
           addToCart={ this.addToCart }
           cart={ cart }
