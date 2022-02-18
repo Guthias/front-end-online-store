@@ -56,5 +56,7 @@ Product.propTypes = {
   price: PropTypes.number.isRequired,
   thumbnail: PropTypes.string.isRequired,
   addToCart: PropTypes.func.isRequired,
-  shipping: PropTypes.objectOf.isRequired,
+  shipping: PropTypes.shape({
+    free_shipping: PropTypes.bool.isRequired,
+  }).isRequired,
 };

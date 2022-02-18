@@ -68,5 +68,7 @@ ProductCart.propTypes = {
   quantity: PropTypes.number.isRequired,
   increaseCart: PropTypes.func.isRequired,
   decreaseCart: PropTypes.func.isRequired,
-  shipping: PropTypes.objectOf.isRequired,
+  shipping: PropTypes.shape({
+    free_shipping: PropTypes.bool.isRequired,
+  }).isRequired,
 };
