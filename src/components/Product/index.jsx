@@ -1,31 +1,46 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
+import { FaTruck } from 'react-icons/fa';
+import './style.css';
 
 export default class Product extends Component {
+  qualityImage = (thumbnail) => thumbnail.replace('I.jpg', 'O.jpg');
+
   render() {
     const { title, price, thumbnail, id, addToCart,
       shipping: { free_shipping: freeShipping } } = this.props;
     return (
       <div className="product" data-testid="product">
-        <Link to={ `product/${id}` } data-testid="product-detail-link">
+        <Link
+          to={ `product/${id}` }
+          data-testid="product-detail-link"
+          className="product-info"
+        >
           <div className="product-area-image">
-            <img className="product-image" src={ thumbnail } alt={ title } />
+            <img
+              className="product-image"
+              src={ this.qualityImage(thumbnail) }
+              alt={ title }
+            />
           </div>
 
           <div className="product-details">
-            <span className="product-price">{ `R$ ${price}` }</span>
-            <span className="product-title">{ title }</span>
-          </div>
-          <div>
             {
-              freeShipping && <span data-testid="free-shipping">Frete Grátis</span>
+              freeShipping && (
+                <span data-testid="free-shipping" className="free-shipping">
+                  <FaTruck className="free-shipping-icon" />
+                  Frete Grátis
+                </span>)
             }
+            <span className="product-price">{ `R$ ${price.toFixed(2)}` }</span>
+            <span className="product-title">{ title }</span>
           </div>
         </Link>
         <button
           data-testid="product-add-to-cart"
           type="button"
+          className="product-button"
           onClick={ () => addToCart(id, title) }
         >
           Adicionar ao Carrinho
@@ -41,5 +56,7 @@ Product.propTypes = {
   price: PropTypes.number.isRequired,
   thumbnail: PropTypes.string.isRequired,
   addToCart: PropTypes.func.isRequired,
-  shipping: PropTypes.objectOf.isRequired,
+  shipping: PropTypes.shape({
+    free_shipping: PropTypes.bool.isRequired,
+  }).isRequired,
 };
