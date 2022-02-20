@@ -2,11 +2,21 @@ import React from 'react';
 import { BrowserRouter } from 'react-router-dom';
 import Content from './components/Content';
 import Header from './components/Header';
+import * as api from './services/api';
 import './App.css';
 
 class App extends React.Component {
   state = {
     cart: [],
+  }
+
+  componentDidMount() {
+    this.setState({ cart: api.getLocalStorage('cart') || [] });
+  }
+
+  updateCart = (newCart) => {
+    this.setState({ cart: newCart });
+    api.saveLocalStorage('cart', newCart);
   }
 
   newCartItem = (productId, productTitle) => ({
@@ -24,8 +34,8 @@ class App extends React.Component {
     } else {
       productOnCart = this.newCartItem(productId, productTitle);
       newCart.push(productOnCart);
+      this.updateCart(newCart);
     }
-    this.setState({ cart: newCart });
   };
 
   decreaseCart = (productId) => {
@@ -34,25 +44,30 @@ class App extends React.Component {
     const productOnCart = newCart.find(({ id }) => productId === id);
     if (productOnCart.quantity - 1 >= 1) {
       productOnCart.quantity -= 1;
-      this.setState({ cart: newCart });
+      this.updateCart(newCart);
     }
   }
 
-  increaseCart = (productId, maxQuantity) => {
+  increaseCart = (productId, maxQuantity = Infinity) => {
     const { cart } = this.state;
     const newCart = [...cart];
     const productOnCart = newCart.find(({ id }) => productId === id);
     if (productOnCart.quantity + 1 <= maxQuantity) {
       productOnCart.quantity += 1;
-      this.setState({ cart: newCart });
+      this.updateCart(newCart);
     }
+  }
+
+  cartSize = () => {
+    const { cart } = this.state;
+    return cart.reduce((acc, { quantity }) => acc + quantity, 0) || 0;
   }
 
   render() {
     const { cart } = this.state;
     return (
       <BrowserRouter>
-        <Header />
+        <Header cartSize={ this.cartSize() } />
         <Content
           addToCart={ this.addToCart }
           cart={ cart }

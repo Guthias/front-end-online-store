@@ -1,18 +1,35 @@
 header {
   align-items: center;
-  color: black;
+  background-color: #f5af19;
   display: flex;
   justify-content: space-between;
   padding: 5px 20px;
 }
 
 header a {
+  color: white;
   text-decoration: none;
 }
 
 .cart-button {
   background: none;
   border: none;
+  color: white;
   cursor: pointer;
   font-size: 40px;
+  position: relative;
+}
+
+.cart-quantity {
+  background-color: rgb(242, 39, 39);
+  border-radius: 50%;
+  color: white;
+  font-size: 14px;
+  font-weight: 700;
+  height: 18px;
+  padding: 4px;
+  position: absolute;
+  right: -5px;
+  top: -5px;
+  width: 18px;
 }

@@ -13,7 +13,14 @@ export default class ProductValuation extends Component {
   componentDidMount() {
     const { productId } = this.props;
     const allReviews = api.getLocalStorage('review');
-    this.setState({ valuations: allReviews ? allReviews[productId] : [] });
+    let valuations;
+    try {
+      valuations = allReviews[productId];
+    } catch {
+      valuations = [];
+    } finally {
+      this.setState({ valuations });
+    }
   }
 
   saveReview = () => {
