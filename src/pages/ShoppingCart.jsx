@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 import ProductCart from '../components/ProductCart';
 import * as api from '../services/api';
 
@@ -40,6 +41,11 @@ class ShoppingCart extends React.Component {
     return cart.find(({ id }) => id === productId).quantity;
   }
 
+  handleClickCart = () => {
+    const { productDetails } = this.state;
+    api.saveLocalStorage('cartProducts', productDetails);
+  }
+
   render() {
     const { productDetails, loading } = this.state;
     const { cart, increaseCart, decreaseCart } = this.props;
@@ -73,6 +79,18 @@ class ShoppingCart extends React.Component {
                     quantity={ this.checkCartQuantity(product.id) }
                   />))
             }
+            <Link
+              data-testid="checkout-products"
+              to="/Checkout"
+            >
+              <button
+                type="button"
+                onClick={ this.handleClickCart() }
+              >
+                Finalizar Compra
+              </button>
+            </Link>
+
           </div>
         )
     );
