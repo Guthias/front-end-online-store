@@ -14,6 +14,7 @@ export default class Content extends Component {
       <Switch>
         <Route exact path="/" render={ () => <Home addToCart={ addToCart } /> } />
         <Route path="/ShoppingCart" render={ () => <ShoppingCart { ...this.props } /> } />
+        <Route path="/cart" render={ () => <ShoppingCart { ...this.props } /> } />
         <Route path="/Checkout" component={ Checkout } />
         <Route
           path="/Product/:id"
